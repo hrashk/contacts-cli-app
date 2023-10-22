@@ -10,14 +10,14 @@ class UiParserTest {
 
     @Test
     public void quit() {
-        var parser = new UiParser(new StringReader("quit"));
+        var parser = new UiParser(new StringReader("quit\nlist"));
 
-        assertTrue(parser.hasNext());
+        assertTrue(parser.hasNext(), "More commands are available");
 
         var c = parser.next();
         String output = c.exec();
 
         assertEquals("Good bye", output);
-        assertFalse(parser.hasNext());
+        assertFalse(parser.hasNext(), "More commands are available");
     }
 }

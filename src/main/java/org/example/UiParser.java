@@ -7,20 +7,23 @@ import java.io.Reader;
 import java.util.Scanner;
 
 public class UiParser {
-    private final Scanner scanner;
+    private Scanner scanner;
 
     public UiParser(Reader reader) {
         this.scanner = new Scanner(reader);
     }
 
     public boolean hasNext() {
-        return scanner.hasNext();
+        return scanner != null && scanner.hasNext();
     }
 
     public Command next() {
         var input = scanner.nextLine();
-        if ("quit".equalsIgnoreCase(input))
+
+        if ("quit".equalsIgnoreCase(input)) {
+            scanner = null;
             return new Quit();
+        }
 
         return null;
     }
