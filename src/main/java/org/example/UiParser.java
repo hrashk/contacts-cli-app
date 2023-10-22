@@ -2,6 +2,7 @@ package org.example;
 
 import org.example.commands.Command;
 import org.example.commands.Quit;
+import org.example.commands.Unknown;
 
 import java.io.Reader;
 import java.util.Scanner;
@@ -25,6 +26,6 @@ public class UiParser {
             return new Quit();
         }
 
-        return null;
+        return new Unknown();
     }
 }
