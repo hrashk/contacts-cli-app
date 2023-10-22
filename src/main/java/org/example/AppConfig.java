@@ -11,7 +11,7 @@ import java.io.InputStreamReader;
 public class AppConfig {
 
     @Bean
-    public UiParser parser() {
-        return new UiParser(new InputStreamReader(System.in));
+    public UiParser parser(ContactsRepo repo) {
+        return new UiParser(new InputStreamReader(System.in), repo);
     }
 }

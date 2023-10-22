@@ -32,4 +32,28 @@ class UiParserTest {
 
         assertTrue(output.startsWith("Unknown"));
     }
+
+    @Test
+    public void showEmpty() {
+        var parser = new UiParser(new StringReader("show"));
+
+        assertTrue(parser.hasNext(), "More commands are available");
+
+        var c = parser.next();
+        String output = c.exec();
+
+        assertEquals("You have no contacts", output);
+    }
+
+    @Test
+    public void show() {
+        var parser = new UiParser(new StringReader("show"), TestData.sampleRepo());
+
+        assertTrue(parser.hasNext(), "More commands are available");
+
+        var c = parser.next();
+        String output = c.exec();
+
+        assertTrue(output.contains("|"), "Shows contacts");
+    }
 }

@@ -2,6 +2,7 @@ package org.example;
 
 import org.example.commands.Command;
 import org.example.commands.Quit;
+import org.example.commands.Show;
 import org.example.commands.Unknown;
 
 import java.io.Reader;
@@ -9,9 +10,15 @@ import java.util.Scanner;
 
 public class UiParser {
     private Scanner scanner;
+    private final ContactsRepo repo;
 
     public UiParser(Reader reader) {
+        this(reader, null);
+    }
+
+    public UiParser(Reader reader, ContactsRepo repo) {
         this.scanner = new Scanner(reader);
+        this.repo = repo;
     }
 
     public boolean hasNext() {
@@ -24,6 +31,8 @@ public class UiParser {
         if ("quit".equalsIgnoreCase(input)) {
             scanner = null;
             return new Quit();
+        } else if ("show".equalsIgnoreCase(input)) {
+            return new Show(repo);
         }
 
         return new Unknown();
