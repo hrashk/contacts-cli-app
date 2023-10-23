@@ -64,4 +64,15 @@ class UserInputProcessorTest {
 
         assertEquals(Delete.CONTACT_DELETED, output);
     }
+
+    @Test
+    public void save() {
+        var processor = TestData.aProcessor("save");
+
+        assertTrue(processor.hasNext(), "More commands are available");
+
+        String output = processor.next();
+
+        assertTrue(output.startsWith("File saved at "), "Contacts are saved in a file");
+    }
 }

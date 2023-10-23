@@ -25,6 +25,6 @@ public class TestData {
     }
 
     public static List<Command> allCommands(ContactsList repo) {
-        return List.of(new Show(repo), new Quit(), new Add(repo), new Delete(repo));
+        return List.of(new Show(repo), new Quit(), new Add(repo), new Delete(repo), new Save(repo));
     }
 }
