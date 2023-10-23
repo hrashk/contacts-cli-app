@@ -8,7 +8,7 @@ class UserInputProcessorTest {
 
     @Test
     public void quit() {
-        var processor = TestData.aProcessorForInput("quit\nlist");
+        var processor = TestData.aProcessor("quit\nlist");
 
         assertTrue(processor.hasNext(), "More commands are available");
 
@@ -20,7 +20,7 @@ class UserInputProcessorTest {
 
     @Test
     public void unknown() {
-        var processor = TestData.aProcessorForInput("asdf fdsa");
+        var processor = TestData.aProcessor("asdf fdsa");
 
         assertTrue(processor.hasNext(), "More commands are available");
 
@@ -42,7 +42,7 @@ class UserInputProcessorTest {
 
     @Test
     public void show() {
-        var processor = TestData.aProcessorForInput("show");
+        var processor = TestData.aProcessor("show");
 
         assertTrue(processor.hasNext(), "More commands are available");
 

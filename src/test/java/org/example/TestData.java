@@ -11,11 +11,11 @@ public class TestData {
         return repo;
     }
 
-    public static UserInputProcessor aProcessorForInput(String show) {
-        return new UserInputProcessor(new StringReader(show), sampleRepo());
+    public static UserInputProcessor aProcessor(String userInput) {
+        return new UserInputProcessor(new StringReader(userInput), sampleRepo());
     }
 
-    public static UserInputProcessor aProcessorWithoutContacts(String show) {
-        return new UserInputProcessor(new StringReader(show), new ContactsList());
+    public static UserInputProcessor aProcessorWithoutContacts(String userInput) {
+        return new UserInputProcessor(new StringReader(userInput), new ContactsList());
     }
 }
