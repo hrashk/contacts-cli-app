@@ -8,45 +8,45 @@ class UserInputProcessorTest {
 
     @Test
     public void quit() {
-        var parser = TestData.aProcessorForInput("quit\nlist");
+        var processor = TestData.aProcessorForInput("quit\nlist");
 
-        assertTrue(parser.hasNext(), "More commands are available");
+        assertTrue(processor.hasNext(), "More commands are available");
 
-        String output = parser.next();
+        String output = processor.next();
 
         assertEquals("Good bye", output);
-        assertFalse(parser.hasNext(), "More commands are available");
+        assertFalse(processor.hasNext(), "More commands are available");
     }
 
     @Test
     public void unknown() {
-        var parser = TestData.aProcessorForInput("asdf fdsa");
+        var processor = TestData.aProcessorForInput("asdf fdsa");
 
-        assertTrue(parser.hasNext(), "More commands are available");
+        assertTrue(processor.hasNext(), "More commands are available");
 
-        String output = parser.next();
+        String output = processor.next();
 
         assertTrue(output.startsWith("Unknown"));
     }
 
     @Test
     public void showEmpty() {
-        var parser = TestData.aProcessorWithoutContacts("show");
+        var processor = TestData.aProcessorWithoutContacts("show");
 
-        assertTrue(parser.hasNext(), "More commands are available");
+        assertTrue(processor.hasNext(), "More commands are available");
 
-        String output = parser.next();
+        String output = processor.next();
 
         assertEquals("You have no contacts", output);
     }
 
     @Test
     public void show() {
-        var parser = TestData.aProcessorForInput("show");
+        var processor = TestData.aProcessorForInput("show");
 
-        assertTrue(parser.hasNext(), "More commands are available");
+        assertTrue(processor.hasNext(), "More commands are available");
 
-        String output = parser.next();
+        String output = processor.next();
 
         assertTrue(output.contains("|"), "Shows contacts");
     }
