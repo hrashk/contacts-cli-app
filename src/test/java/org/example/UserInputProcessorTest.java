@@ -1,6 +1,7 @@
 package org.example;
 
 import org.example.commands.Add;
+import org.example.commands.Delete;
 import org.example.commands.Quit;
 import org.junit.jupiter.api.Test;
 
@@ -51,5 +52,16 @@ class UserInputProcessorTest {
         String output = processor.next();
 
         assertEquals(Add.CONTACT_ADDED, output);
+    }
+
+    @Test
+    public void delete() {
+        var processor = TestData.aProcessor("rm someEmail2@example.example");
+
+        assertTrue(processor.hasNext(), "More commands are available");
+
+        String output = processor.next();
+
+        assertEquals(Delete.CONTACT_DELETED, output);
     }
 }

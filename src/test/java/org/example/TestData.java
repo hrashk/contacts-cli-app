@@ -1,9 +1,6 @@
 package org.example;
 
-import org.example.commands.Add;
-import org.example.commands.Command;
-import org.example.commands.Quit;
-import org.example.commands.Show;
+import org.example.commands.*;
 
 import java.io.StringReader;
 import java.util.List;
@@ -28,6 +25,6 @@ public class TestData {
     }
 
     public static List<Command> allCommands(ContactsList repo) {
-        return List.of(new Show(repo), new Quit(), new Add(repo));
+        return List.of(new Show(repo), new Quit(), new Add(repo), new Delete(repo));
     }
 }
