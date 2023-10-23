@@ -28,6 +28,16 @@ class AddTest {
 
     @Test
     void handleExistingContact() {
+        ContactsList repo = TestData.sampleRepo();
+        var a = new Add(repo);
+        String response = a.handle("add Peter Petroff; +78001112233; someEmail2@example.example");
+
+        assertEquals(Add.CONTACT_UPDATED, response);
+        assertEquals(3, repo.getSize());
+
+        Optional<Contact> byEmail = repo.findByEmail("someEmail2@example.example");
+        assertTrue(byEmail.isPresent(), "Contact is found by email");
+        assertEquals("Peter Petroff", byEmail.get().name());
     }
 
     @Test

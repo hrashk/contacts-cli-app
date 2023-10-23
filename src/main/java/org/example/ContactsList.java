@@ -27,4 +27,8 @@ public class ContactsList {
     public Optional<Contact> findByEmail(String email) {
         return contacts.stream().filter(c -> Objects.equals(c.email(), email)).findAny();
     }
+
+    public void update(Contact contact) {
+        contacts.replaceAll(c -> Objects.equals(c.email(), contact.email()) ? contact : c);
+    }
 }

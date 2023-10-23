@@ -26,10 +26,19 @@ public class Add implements Command {
     public String handle(String userInput) {
         try {
             Contact contact = parse(userInput);
-            repo.add(contact);
-            return CONTACT_ADDED;
+            return handle(contact);
         } catch (ArrayIndexOutOfBoundsException ex) {
             return INVALID_FORMAT;
+        }
+    }
+
+    private String handle(Contact contact) {
+        if (repo.findByEmail(contact.email()).isEmpty()) {
+            repo.add(contact);
+            return CONTACT_ADDED;
+        } else {
+            repo.update(contact);
+            return CONTACT_UPDATED;
         }
     }
 
