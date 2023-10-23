@@ -44,8 +44,7 @@ public class Add implements Command {
 
     private static Contact parse(String userInput) {
         String contactDetails = userInput.split("\\s+", 2)[1];
-        String[] pieces = contactDetails.split(";\\s+");
-        return new Contact(pieces[0], pieces[1], pieces[2]);
+        return Contact.fromString(contactDetails);
     }
 
     @Override

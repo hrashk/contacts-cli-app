@@ -1,10 +1,12 @@
 package org.example;
 
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Repository;
 
 import java.util.*;
 
 @Repository
+@Profile("default")
 public class ContactsList {
     private final List<Contact> contacts = new ArrayList<>();
 
