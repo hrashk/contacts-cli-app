@@ -2,22 +2,22 @@ package org.example;
 
 import org.example.commands.Command;
 import org.example.commands.Quit;
-import org.example.commands.Show;
 import org.example.commands.Unknown;
 import org.springframework.stereotype.Component;
 
 import java.io.Reader;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Scanner;
 
 @Component
 public class UserInputProcessor implements Iterable<String>, Iterator<String> {
     private Scanner scanner;
-    private final ContactsList repo;
+    private final List<Command> commands;
 
-    public UserInputProcessor(Reader reader, ContactsList repo) {
+    public UserInputProcessor(Reader reader, List<Command> commands) {
         this.scanner = new Scanner(reader);
-        this.repo = repo;
+        this.commands = commands;
     }
 
     @Override
@@ -43,13 +43,10 @@ public class UserInputProcessor implements Iterable<String>, Iterator<String> {
         return c.handle(userInput);
     }
 
-    private Command findCommand(String input) {
-        if ("quit".equalsIgnoreCase(input)) {
-            return new Quit();
-        } else if ("show".equalsIgnoreCase(input)) {
-            return new Show(repo);
-        }
-
-        return new Unknown();
+    private Command findCommand(String userInput) {
+        return commands.stream()
+                .filter(c -> c.canHandle(userInput))
+                .findAny()
+                .orElse(new Unknown());
     }
 }

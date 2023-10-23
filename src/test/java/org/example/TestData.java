@@ -1,6 +1,11 @@
 package org.example;
 
+import org.example.commands.Command;
+import org.example.commands.Quit;
+import org.example.commands.Show;
+
 import java.io.StringReader;
+import java.util.List;
 
 public class TestData {
     public static ContactsList sampleRepo() {
@@ -12,10 +17,16 @@ public class TestData {
     }
 
     public static UserInputProcessor aProcessor(String userInput) {
-        return new UserInputProcessor(new StringReader(userInput), sampleRepo());
+        ContactsList repo = sampleRepo();
+        return new UserInputProcessor(new StringReader(userInput), allCommands(repo));
     }
 
     public static UserInputProcessor aProcessorWithoutContacts(String userInput) {
-        return new UserInputProcessor(new StringReader(userInput), new ContactsList());
+        ContactsList repo = new ContactsList();
+        return new UserInputProcessor(new StringReader(userInput), allCommands(repo));
+    }
+
+    public static List<Command> allCommands(ContactsList repo) {
+        return List.of(new Show(repo), new Quit());
     }
 }
