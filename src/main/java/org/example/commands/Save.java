@@ -2,6 +2,7 @@ package org.example.commands;
 
 import org.example.Contact;
 import org.example.ContactsList;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 
 import java.io.BufferedWriter;
@@ -11,11 +12,14 @@ import java.io.IOException;
 @Controller
 public class Save implements Command {
     public static final String NO_CONTACTS = "You have no contacts";
+    public static final String FILE_SAVED = "File saved at ";
 
     private final ContactsList repo;
+    private final String filePath;
 
-    public Save(ContactsList repo) {
+    public Save(ContactsList repo, @Value("${app.save.path}") String filePath) {
         this.repo = repo;
+        this.filePath = filePath;
     }
 
     @Override
@@ -35,14 +39,14 @@ public class Save implements Command {
 
         try {
             writeToFile();
-            return "File saved at contacts.txt";
+            return FILE_SAVED + filePath;
         } catch (IOException e) {
             return "Failed to save the contacts: " + e.getMessage();
         }
     }
 
     private void writeToFile() throws IOException {
-        try (var out = new BufferedWriter(new FileWriter("contacts.txt"))) {
+        try (var out = new BufferedWriter(new FileWriter(filePath))) {
             for (Contact contact : repo.getAll()) {
                 out.write(contactToString(contact));
                 out.newLine();

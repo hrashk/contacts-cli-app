@@ -3,6 +3,7 @@ package org.example;
 import org.example.commands.Add;
 import org.example.commands.Delete;
 import org.example.commands.Quit;
+import org.example.commands.Save;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -73,6 +74,6 @@ class UserInputProcessorTest {
 
         String output = processor.next();
 
-        assertTrue(output.startsWith("File saved at "), "Contacts are saved in a file");
+        assertTrue(output.startsWith(Save.FILE_SAVED), "Contacts are saved in a file");
     }
 }
