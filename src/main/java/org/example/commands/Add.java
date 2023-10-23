@@ -5,6 +5,9 @@ import org.springframework.stereotype.Controller;
 
 @Controller
 public class Add implements Command {
+    public static final String CONTACT_ADDED = "1 contact added";
+    public static final String CONTACT_UPDATED = "1 contact updated";
+
     private final ContactsList repo;
 
     public Add(ContactsList repo) {
@@ -19,7 +22,7 @@ public class Add implements Command {
 
     @Override
     public String handle(String userInput) {
-        return "1 contact added";
+        return CONTACT_ADDED;
     }
 
     @Override

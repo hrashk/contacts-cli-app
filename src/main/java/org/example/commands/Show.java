@@ -8,6 +8,8 @@ import java.util.stream.Collectors;
 
 @Controller
 public class Show implements Command {
+    public static final String NO_CONTACTS = "You have no contacts";
+
     private final ContactsList repo;
 
     public Show(ContactsList repo) {
@@ -27,7 +29,7 @@ public class Show implements Command {
     @Override
     public String handle(String userInput) {
         if (repo == null || repo.isEmpty())
-            return "You have no contacts";
+            return NO_CONTACTS;
 
         return repo.getAll().stream()
                 .map(Show::contactToString)

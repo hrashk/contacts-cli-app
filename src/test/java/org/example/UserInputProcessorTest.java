@@ -1,5 +1,7 @@
 package org.example;
 
+import org.example.commands.Add;
+import org.example.commands.Quit;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -14,7 +16,7 @@ class UserInputProcessorTest {
 
         String output = processor.next();
 
-        assertEquals("Good bye", output);
+        assertEquals(Quit.GOOD_BYE, output);
         assertFalse(processor.hasNext(), "More commands are available");
     }
 
@@ -59,6 +61,6 @@ class UserInputProcessorTest {
 
         String output = processor.next();
 
-        assertEquals("1 contact added", output);
+        assertEquals(Add.CONTACT_ADDED, output);
     }
 }
