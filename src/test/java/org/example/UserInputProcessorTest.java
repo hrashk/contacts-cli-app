@@ -2,15 +2,13 @@ package org.example;
 
 import org.junit.jupiter.api.Test;
 
-import java.io.StringReader;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 class UserInputProcessorTest {
 
     @Test
     public void quit() {
-        var parser = new UserInputProcessor(new StringReader("quit\nlist"));
+        var parser = TestData.aProcessorForInput("quit\nlist");
 
         assertTrue(parser.hasNext(), "More commands are available");
 
@@ -22,7 +20,7 @@ class UserInputProcessorTest {
 
     @Test
     public void unknown() {
-        var parser = new UserInputProcessor(new StringReader("asdf fdsa"));
+        var parser = TestData.aProcessorForInput("asdf fdsa");
 
         assertTrue(parser.hasNext(), "More commands are available");
 
@@ -33,7 +31,7 @@ class UserInputProcessorTest {
 
     @Test
     public void showEmpty() {
-        var parser = new UserInputProcessor(new StringReader("show"));
+        var parser = TestData.aProcessorWithoutContacts("show");
 
         assertTrue(parser.hasNext(), "More commands are available");
 
@@ -44,7 +42,7 @@ class UserInputProcessorTest {
 
     @Test
     public void show() {
-        var parser = new UserInputProcessor(new StringReader("show"), TestData.sampleRepo());
+        var parser = TestData.aProcessorForInput("show");
 
         assertTrue(parser.hasNext(), "More commands are available");
 
