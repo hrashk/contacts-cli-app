@@ -32,15 +32,15 @@ public class UserInputProcessor implements Iterable<String>, Iterator<String> {
 
     @Override
     public String next() {
-        String input = scanner.nextLine();
+        String userInput = scanner.nextLine();
 
-        Command c = findCommand(input);
+        Command c = findCommand(userInput);
 
         if (c instanceof Quit) {
             scanner = null;
         }
 
-        return c.exec();
+        return c.handle(userInput);
     }
 
     private Command findCommand(String input) {

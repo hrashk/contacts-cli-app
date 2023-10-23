@@ -1,5 +1,7 @@
 package org.example.commands;
 
 public interface Command {
-    String exec();
+    boolean canHandle(String userInput);
+    String handle(String userInput);
+    String getHelpString();
 }

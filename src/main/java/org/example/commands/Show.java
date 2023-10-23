@@ -2,9 +2,11 @@ package org.example.commands;
 
 import org.example.Contact;
 import org.example.ContactsList;
+import org.springframework.stereotype.Controller;
 
 import java.util.stream.Collectors;
 
+@Controller
 public class Show implements Command {
     private final ContactsList repo;
 
@@ -13,7 +15,17 @@ public class Show implements Command {
     }
 
     @Override
-    public String exec() {
+    public String getHelpString() {
+        return "show - list all contacts";
+    }
+
+    @Override
+    public boolean canHandle(String userInput) {
+        return "show".equalsIgnoreCase(userInput);
+    }
+
+    @Override
+    public String handle(String userInput) {
         if (repo == null || repo.isEmpty())
             return "You have no contacts";
 
