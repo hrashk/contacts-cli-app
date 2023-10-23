@@ -9,17 +9,22 @@ import java.io.Reader;
 import java.util.Iterator;
 import java.util.Scanner;
 
-public class UiParser implements Iterable<Command>, Iterator<Command> {
+public class UserInputProcessor implements Iterable<String>, Iterator<String> {
     private Scanner scanner;
     private final ContactsRepo repo;
 
-    public UiParser(Reader reader) {
+    public UserInputProcessor(Reader reader) {
         this(reader, null);
     }
 
-    public UiParser(Reader reader, ContactsRepo repo) {
+    public UserInputProcessor(Reader reader, ContactsRepo repo) {
         this.scanner = new Scanner(reader);
         this.repo = repo;
+    }
+
+    @Override
+    public Iterator<String> iterator() {
+        return this;
     }
 
     @Override
@@ -28,21 +33,25 @@ public class UiParser implements Iterable<Command>, Iterator<Command> {
     }
 
     @Override
-    public Command next() {
-        var input = scanner.nextLine();
+    public String next() {
+        String input = scanner.nextLine();
 
-        if ("quit".equalsIgnoreCase(input)) {
+        Command c = findCommand(input);
+
+        if (c instanceof Quit) {
             scanner = null;
+        }
+
+        return c.exec();
+    }
+
+    private Command findCommand(String input) {
+        if ("quit".equalsIgnoreCase(input)) {
             return new Quit();
         } else if ("show".equalsIgnoreCase(input)) {
             return new Show(repo);
         }
 
         return new Unknown();
-    }
-
-    @Override
-    public Iterator<Command> iterator() {
-        return this;
     }
 }
