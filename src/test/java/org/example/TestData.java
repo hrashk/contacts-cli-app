@@ -1,5 +1,6 @@
 package org.example;
 
+import org.example.commands.Add;
 import org.example.commands.Command;
 import org.example.commands.Quit;
 import org.example.commands.Show;
@@ -27,6 +28,6 @@ public class TestData {
     }
 
     public static List<Command> allCommands(ContactsList repo) {
-        return List.of(new Show(repo), new Quit());
+        return List.of(new Show(repo), new Quit(), new Add(repo));
     }
 }

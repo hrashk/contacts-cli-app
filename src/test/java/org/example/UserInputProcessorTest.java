@@ -50,4 +50,15 @@ class UserInputProcessorTest {
 
         assertTrue(output.contains("|"), "Shows contacts");
     }
+
+    @Test
+    public void add() {
+        var processor = TestData.aProcessor("add Peter Petroff; +78001112233; peter@petroff.com");
+
+        assertTrue(processor.hasNext(), "More commands are available");
+
+        String output = processor.next();
+
+        assertEquals("1 contact added", output);
+    }
 }
