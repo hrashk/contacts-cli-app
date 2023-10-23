@@ -1,14 +1,14 @@
 package org.example.commands;
 
 import org.example.Contact;
-import org.example.ContactsRepo;
+import org.example.ContactsList;
 
 import java.util.stream.Collectors;
 
 public class Show implements Command {
-    private final ContactsRepo repo;
+    private final ContactsList repo;
 
-    public Show(ContactsRepo repo) {
+    public Show(ContactsList repo) {
         this.repo = repo;
     }
 
@@ -17,7 +17,7 @@ public class Show implements Command {
         if (repo == null || repo.isEmpty())
             return "You have no contacts";
 
-        return repo.getContacts().stream()
+        return repo.getAll().stream()
                 .map(Show::contactToString)
                 .collect(Collectors.joining("\n"));
     }

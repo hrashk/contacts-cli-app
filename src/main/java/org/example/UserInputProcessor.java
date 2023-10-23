@@ -13,9 +13,9 @@ import java.util.Scanner;
 @Component
 public class UserInputProcessor implements Iterable<String>, Iterator<String> {
     private Scanner scanner;
-    private final ContactsRepo repo;
+    private final ContactsList repo;
 
-    public UserInputProcessor(Reader reader, ContactsRepo repo) {
+    public UserInputProcessor(Reader reader, ContactsList repo) {
         this.scanner = new Scanner(reader);
         this.repo = repo;
     }
