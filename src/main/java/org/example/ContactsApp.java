@@ -9,8 +9,7 @@ public class ContactsApp {
 
         var parser = ctx.getBean(UiParser.class);
 
-        while (parser.hasNext()) {
-            Command c = parser.next();
+        for (Command c : parser) {
             String output = c.exec();
             System.out.println(output);
         }

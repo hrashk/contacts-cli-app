@@ -6,9 +6,10 @@ import org.example.commands.Show;
 import org.example.commands.Unknown;
 
 import java.io.Reader;
+import java.util.Iterator;
 import java.util.Scanner;
 
-public class UiParser {
+public class UiParser implements Iterable<Command>, Iterator<Command> {
     private Scanner scanner;
     private final ContactsRepo repo;
 
@@ -21,10 +22,12 @@ public class UiParser {
         this.repo = repo;
     }
 
+    @Override
     public boolean hasNext() {
         return scanner != null && scanner.hasNext();
     }
 
+    @Override
     public Command next() {
         var input = scanner.nextLine();
 
@@ -36,5 +39,10 @@ public class UiParser {
         }
 
         return new Unknown();
+    }
+
+    @Override
+    public Iterator<Command> iterator() {
+        return this;
     }
 }
