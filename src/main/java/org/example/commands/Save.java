@@ -12,7 +12,7 @@ import java.io.IOException;
 @Controller
 public class Save implements Command {
     public static final String NO_CONTACTS = "You have no contacts";
-    public static final String FILE_SAVED = "File saved at ";
+    public static final String FILE_SAVED = "Contacts saved in file ";
 
     private final ContactsList repo;
     private final String filePath;

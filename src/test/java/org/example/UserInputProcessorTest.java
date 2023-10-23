@@ -30,7 +30,7 @@ class UserInputProcessorTest {
 
         String output = processor.next();
 
-        assertTrue(output.startsWith("Unknown"));
+        assertTrue(output.startsWith("Unknown"), "Expected unknown message but was " + output);
     }
 
     @Test
@@ -41,7 +41,7 @@ class UserInputProcessorTest {
 
         String output = processor.next();
 
-        assertTrue(output.contains("|"), "Shows contacts");
+        assertTrue(output.contains("|"), "Expected contacts listed but was " + output);
     }
 
     @Test
@@ -74,6 +74,17 @@ class UserInputProcessorTest {
 
         String output = processor.next();
 
-        assertTrue(output.startsWith(Save.FILE_SAVED), "Contacts are saved in a file");
+        assertTrue(output.startsWith(Save.FILE_SAVED), "Expected contacts to be saved but was " + output);
+    }
+
+    @Test
+    public void help() {
+        var processor = TestData.aProcessor("help");
+
+        assertTrue(processor.hasNext(), "More commands are available");
+
+        String output = processor.next();
+
+        assertTrue(output.contains("Usage"), "Expected usage info but was: " + output);
     }
 }
