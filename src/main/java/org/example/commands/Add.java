@@ -1,5 +1,6 @@
 package org.example.commands;
 
+import org.example.Contact;
 import org.example.ContactsList;
 import org.springframework.stereotype.Controller;
 
@@ -7,6 +8,7 @@ import org.springframework.stereotype.Controller;
 public class Add implements Command {
     public static final String CONTACT_ADDED = "1 contact added";
     public static final String CONTACT_UPDATED = "1 contact updated";
+    public static final String INVALID_FORMAT = "Contact format is invalid. Type help for usage info.";
 
     private final ContactsList repo;
 
@@ -22,7 +24,19 @@ public class Add implements Command {
 
     @Override
     public String handle(String userInput) {
-        return CONTACT_ADDED;
+        try {
+            Contact contact = parse(userInput);
+            repo.add(contact);
+            return CONTACT_ADDED;
+        } catch (ArrayIndexOutOfBoundsException ex) {
+            return INVALID_FORMAT;
+        }
+    }
+
+    private static Contact parse(String userInput) {
+        String contactDetails = userInput.split("\\s", 2)[1];
+        String[] pieces = contactDetails.split(";\\s+");
+        return new Contact(pieces[0], pieces[1], pieces[2]);
     }
 
     @Override

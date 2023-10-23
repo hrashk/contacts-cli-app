@@ -1,0 +1,42 @@
+package org.example.commands;
+
+import org.example.Contact;
+import org.example.ContactsList;
+import org.example.TestData;
+import org.junit.jupiter.api.Test;
+
+import java.util.Optional;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+class AddTest {
+
+    @Test
+    void handleNewContact() {
+        ContactsList repo = TestData.sampleRepo();
+        var a = new Add(repo);
+        String response = a.handle("add Peter Petroff; +78001112233; peter@petroff.com");
+
+        assertEquals(Add.CONTACT_ADDED, response);
+        assertEquals(4, repo.getSize());
+
+        Optional<Contact> byEmail = repo.findByEmail("peter@petroff.com");
+        assertTrue(byEmail.isPresent(), "Contact is found by email");
+        assertEquals("Peter Petroff", byEmail.get().name());
+    }
+
+    @Test
+    void handleExistingContact() {
+    }
+
+    @Test
+    void handleContactWithoutEmail() {
+        ContactsList repo = TestData.sampleRepo();
+        var a = new Add(repo);
+        String response = a.handle("add Peter Petroff; +78001112233");
+
+        assertEquals(Add.INVALID_FORMAT, response);
+        assertEquals(3, repo.getSize());
+    }
+}
