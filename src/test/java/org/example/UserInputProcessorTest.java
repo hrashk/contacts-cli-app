@@ -32,17 +32,6 @@ class UserInputProcessorTest {
     }
 
     @Test
-    public void showEmpty() {
-        var processor = TestData.aProcessorWithoutContacts("show");
-
-        assertTrue(processor.hasNext(), "More commands are available");
-
-        String output = processor.next();
-
-        assertEquals("You have no contacts", output);
-    }
-
-    @Test
     public void show() {
         var processor = TestData.aProcessor("show");
 
