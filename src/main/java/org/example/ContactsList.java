@@ -31,4 +31,8 @@ public class ContactsList {
     public void update(Contact contact) {
         contacts.replaceAll(c -> Objects.equals(c.email(), contact.email()) ? contact : c);
     }
+
+    public void removeByEmail(String email) {
+        contacts.removeIf(c -> Objects.equals(c.email(), email));
+    }
 }
