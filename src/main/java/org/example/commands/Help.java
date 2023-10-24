@@ -30,7 +30,15 @@ public class Help implements Command {
 
     @Override
     public String handle(String userInput) {
-        return "Commands:\n" + helpStrings.stream().sorted().collect(Collectors.joining("\n"));
+        return "Commands:\n" + helpStrings.stream()
+                .map(this::formatHelpLine)
+                .sorted()
+                .collect(Collectors.joining("\n"));
+    }
+
+    private String formatHelpLine(String line) {
+        String[] pieces = line.split("\\s*-\\s*", 2);
+        return String.format("  %-30s%s", pieces[0], pieces[1]);
     }
 
     @Override
