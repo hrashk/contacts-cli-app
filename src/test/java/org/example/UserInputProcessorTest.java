@@ -5,10 +5,12 @@ import org.example.commands.Delete;
 import org.example.commands.Quit;
 import org.example.commands.Save;
 import org.example.config.AppConfig;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
+import java.io.File;
 import java.io.StringReader;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -16,6 +18,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class UserInputProcessorTest {
 
     private UserInputProcessor processor;
+    private String saveFilePath;
 
     @BeforeEach
     public void setUpContext() {
@@ -25,6 +28,12 @@ class UserInputProcessorTest {
         TestData.addSampleContacts(repo);
 
         processor = ctx.getBean(UserInputProcessor.class);
+        saveFilePath = ctx.getEnvironment().getProperty("app.save.path");
+    }
+
+    @AfterEach
+    public void deleteSavedFile() {
+        new File(saveFilePath).delete();
     }
 
     @Test
@@ -92,6 +101,10 @@ class UserInputProcessorTest {
         String output = processor.next();
 
         assertTrue(output.startsWith(Save.FILE_SAVED), "Expected contacts to be saved but was " + output);
+
+        File savedFile = new File(saveFilePath);
+        assertTrue(savedFile.exists(), "File was created");
+        assertTrue(savedFile.length() > 0, "File is not empty");
     }
 
     @Test
