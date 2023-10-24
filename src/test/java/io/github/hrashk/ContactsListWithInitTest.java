@@ -1,4 +1,4 @@
-package org.example;
+package io.github.hrashk;
 
 import org.junit.jupiter.api.Test;
 

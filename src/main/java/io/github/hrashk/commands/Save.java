@@ -1,7 +1,7 @@
-package org.example.commands;
+package io.github.hrashk.commands;
 
-import org.example.Contact;
-import org.example.ContactsList;
+import io.github.hrashk.Contact;
+import io.github.hrashk.ContactsList;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 

@@ -1,4 +1,4 @@
-package org.example.commands;
+package io.github.hrashk.commands;
 
 public interface Command {
     boolean canHandle(String userInput);

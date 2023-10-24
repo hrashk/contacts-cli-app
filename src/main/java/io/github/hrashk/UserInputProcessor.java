@@ -1,8 +1,8 @@
-package org.example;
+package io.github.hrashk;
 
-import org.example.commands.Command;
-import org.example.commands.Quit;
-import org.example.commands.Unknown;
+import io.github.hrashk.commands.Command;
+import io.github.hrashk.commands.Quit;
+import io.github.hrashk.commands.Unknown;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

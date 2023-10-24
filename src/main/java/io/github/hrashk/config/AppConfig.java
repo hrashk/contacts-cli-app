@@ -1,4 +1,4 @@
-package org.example.config;
+package io.github.hrashk.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -9,7 +9,7 @@ import java.io.InputStreamReader;
 import java.io.Reader;
 
 @Configuration
-@ComponentScan("org.example")
+@ComponentScan("io.github.hrashk")
 @PropertySource("classpath:application.properties")
 public class AppConfig {
 

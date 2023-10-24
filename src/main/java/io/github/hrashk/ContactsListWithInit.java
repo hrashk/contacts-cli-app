@@ -1,4 +1,4 @@
-package org.example;
+package io.github.hrashk;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Profile;

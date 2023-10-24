@@ -1,4 +1,4 @@
-package org.example;
+package io.github.hrashk;
 
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Repository;
