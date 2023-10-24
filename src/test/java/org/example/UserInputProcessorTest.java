@@ -93,4 +93,15 @@ class UserInputProcessorTest {
 
         assertTrue(output.startsWith(Save.FILE_SAVED), "Expected contacts to be saved but was " + output);
     }
+
+    @Test
+    public void help() {
+        processor.setReader(new StringReader("help"));
+
+        assertTrue(processor.hasNext(), "More commands are available");
+
+        String output = processor.next();
+
+        assertTrue(output.contains("Commands"), "Expected usage info but was: " + output);
+    }
 }
