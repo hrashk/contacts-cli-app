@@ -1,13 +1,13 @@
 package io.github.hrashk.commands;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Component;
 
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.stream.Collectors;
 
-@Controller
+@Component
 public class Help implements Command {
 
     private Collection<String> helpStrings;

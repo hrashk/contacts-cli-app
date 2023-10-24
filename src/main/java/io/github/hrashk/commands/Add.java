@@ -2,9 +2,9 @@ package io.github.hrashk.commands;
 
 import io.github.hrashk.Contact;
 import io.github.hrashk.ContactsList;
-import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Component;
 
-@Controller
+@Component
 public class Add implements Command {
     public static final String CONTACT_ADDED = "1 contact added";
     public static final String CONTACT_UPDATED = "1 contact updated";
