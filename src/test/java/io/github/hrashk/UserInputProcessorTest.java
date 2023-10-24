@@ -1,11 +1,12 @@
-package org.example;
+package io.github.hrashk;
 
-import org.example.commands.Add;
-import org.example.commands.Delete;
-import org.example.commands.Quit;
-import org.example.commands.Save;
-import org.example.config.AppConfig;
+import io.github.hrashk.commands.Add;
+import io.github.hrashk.commands.Delete;
+import io.github.hrashk.commands.Quit;
+import io.github.hrashk.commands.Save;
+import io.github.hrashk.config.AppConfig;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -44,7 +45,7 @@ class UserInputProcessorTest {
 
         String output = processor.next();
 
-        assertEquals(Quit.GOOD_BYE, output);
+        Assertions.assertEquals(Quit.GOOD_BYE, output);
         assertFalse(processor.hasNext(), "More commands are available");
     }
 
@@ -89,7 +90,7 @@ class UserInputProcessorTest {
 
         String output = processor.next();
 
-        assertEquals(Delete.CONTACT_DELETED, output);
+        Assertions.assertEquals(Delete.CONTACT_DELETED, output);
     }
 
     @Test

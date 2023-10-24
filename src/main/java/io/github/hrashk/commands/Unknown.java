@@ -1,4 +1,4 @@
-package org.example.commands;
+package io.github.hrashk.commands;
 
 /**
  * This class is used as a sentinel and is intentionally not marked as a component.

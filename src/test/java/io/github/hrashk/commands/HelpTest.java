@@ -1,6 +1,6 @@
-package org.example.commands;
+package io.github.hrashk.commands;
 
-import org.example.config.AppConfig;
+import io.github.hrashk.config.AppConfig;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;

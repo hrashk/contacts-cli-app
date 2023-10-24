@@ -1,4 +1,4 @@
-package org.example;
+package io.github.hrashk;
 
 public record Contact(String name, String phone, String email) {
     public static Contact fromString(String line) {

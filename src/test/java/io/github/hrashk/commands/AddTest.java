@@ -1,8 +1,8 @@
-package org.example.commands;
+package io.github.hrashk.commands;
 
-import org.example.Contact;
-import org.example.ContactsList;
-import org.example.TestData;
+import io.github.hrashk.Contact;
+import io.github.hrashk.ContactsList;
+import io.github.hrashk.TestData;
 import org.junit.jupiter.api.Test;
 
 import java.util.Optional;

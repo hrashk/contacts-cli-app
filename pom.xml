@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.example</groupId>
+    <groupId>io.github.hrashk</groupId>
     <artifactId>contacts</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
@@ -13,7 +13,7 @@
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <exec.mainClass>org.example.ContactsApp</exec.mainClass>
+        <exec.mainClass>io.github.hrashk.ContactsApp</exec.mainClass>
     </properties>
 
     <dependencies>
@@ -51,7 +51,7 @@
                             <transformers>
                                 <transformer implementation=
                                                      "org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                                    <mainClass>org.example.ContactsApp</mainClass>
+                                    <mainClass>io.github.hrashk.ContactsApp</mainClass>
                                 </transformer>
                             </transformers>
                         </configuration>

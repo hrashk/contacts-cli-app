@@ -1,6 +1,6 @@
-package org.example;
+package io.github.hrashk;
 
-import org.example.config.AppConfig;
+import io.github.hrashk.config.AppConfig;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class ContactsApp {

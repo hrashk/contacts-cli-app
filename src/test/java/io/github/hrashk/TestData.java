@@ -1,4 +1,4 @@
-package org.example;
+package io.github.hrashk;
 
 public class TestData {
     public static ContactsList sampleRepo() {
