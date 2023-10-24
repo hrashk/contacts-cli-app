@@ -9,8 +9,15 @@ public class ContactsApp {
 
         var parser = ctx.getBean(UserInputProcessor.class);
 
+        prompt();
         for (String output : parser) {
             System.out.println(output);
+            prompt();
         }
+    }
+
+    private static void prompt() {
+        System.out.print("contacts-app> ");
+        System.out.flush();
     }
 }
