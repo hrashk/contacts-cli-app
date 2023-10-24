@@ -3,13 +3,13 @@ package io.github.hrashk.commands;
 import io.github.hrashk.Contact;
 import io.github.hrashk.ContactsList;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Component;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 
-@Controller
+@Component
 public class Save implements Command {
     public static final String NO_CONTACTS = "You have no contacts";
     public static final String FILE_SAVED = "Contacts saved in file ";

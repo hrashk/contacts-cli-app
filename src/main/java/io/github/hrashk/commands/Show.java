@@ -2,11 +2,11 @@ package io.github.hrashk.commands;
 
 import io.github.hrashk.Contact;
 import io.github.hrashk.ContactsList;
-import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Component;
 
 import java.util.stream.Collectors;
 
-@Controller
+@Component
 public class Show implements Command {
     public static final String NO_CONTACTS = "You have no contacts";
 

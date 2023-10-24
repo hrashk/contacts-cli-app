@@ -1,8 +1,8 @@
 package io.github.hrashk.commands;
 
-import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Component;
 
-@Controller
+@Component
 public class Quit implements Command {
 
     public static final String GOOD_BYE = "Good bye";

@@ -2,11 +2,11 @@ package io.github.hrashk.commands;
 
 import io.github.hrashk.Contact;
 import io.github.hrashk.ContactsList;
-import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Component;
 
 import java.util.Optional;
 
-@Controller
+@Component
 public class Delete implements Command {
     public static final String CONTACT_DELETED = "1 contact deleted";
     public static final String WRONG_CONTACT = "There is no contact with that email";
