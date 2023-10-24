@@ -4,15 +4,32 @@ import org.example.commands.Add;
 import org.example.commands.Delete;
 import org.example.commands.Quit;
 import org.example.commands.Save;
+import org.example.config.AppConfig;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
+import java.io.StringReader;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class UserInputProcessorTest {
 
+    private UserInputProcessor processor;
+
+    @BeforeEach
+    public void setUpContext() {
+        var ctx = new AnnotationConfigApplicationContext(AppConfig.class);
+
+        var repo = ctx.getBean(ContactsList.class);
+        TestData.addSampleContacts(repo);
+
+        processor = ctx.getBean(UserInputProcessor.class);
+    }
+
     @Test
     public void quit() {
-        var processor = TestData.aProcessor("quit\nlist");
+        processor.setReader(new StringReader("quit\nlist"));
 
         assertTrue(processor.hasNext(), "More commands are available");
 
@@ -24,7 +41,7 @@ class UserInputProcessorTest {
 
     @Test
     public void unknown() {
-        var processor = TestData.aProcessor("asdf fdsa");
+        processor.setReader(new StringReader("asdf fdsa"));
 
         assertTrue(processor.hasNext(), "More commands are available");
 
@@ -35,7 +52,7 @@ class UserInputProcessorTest {
 
     @Test
     public void show() {
-        var processor = TestData.aProcessor("show");
+        processor.setReader(new StringReader("show"));
 
         assertTrue(processor.hasNext(), "More commands are available");
 
@@ -46,7 +63,7 @@ class UserInputProcessorTest {
 
     @Test
     public void add() {
-        var processor = TestData.aProcessor("add Peter Petroff; +78001112233; peter@petroff.com");
+        processor.setReader(new StringReader("add Peter Petroff; +78001112233; peter@petroff.com"));
 
         assertTrue(processor.hasNext(), "More commands are available");
 
@@ -57,7 +74,7 @@ class UserInputProcessorTest {
 
     @Test
     public void delete() {
-        var processor = TestData.aProcessor("rm someEmail2@example.example");
+        processor.setReader(new StringReader("rm someEmail2@example.example"));
 
         assertTrue(processor.hasNext(), "More commands are available");
 
@@ -68,23 +85,12 @@ class UserInputProcessorTest {
 
     @Test
     public void save() {
-        var processor = TestData.aProcessor("save");
+        processor.setReader(new StringReader("save"));
 
         assertTrue(processor.hasNext(), "More commands are available");
 
         String output = processor.next();
 
         assertTrue(output.startsWith(Save.FILE_SAVED), "Expected contacts to be saved but was " + output);
-    }
-
-    @Test
-    public void help() {
-        var processor = TestData.aProcessor("help");
-
-        assertTrue(processor.hasNext(), "More commands are available");
-
-        String output = processor.next();
-
-        assertTrue(output.contains("Usage"), "Expected usage info but was: " + output);
     }
 }

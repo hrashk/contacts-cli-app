@@ -3,21 +3,26 @@ package org.example;
 import org.example.commands.Command;
 import org.example.commands.Quit;
 import org.example.commands.Unknown;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.io.Reader;
+import java.util.Collection;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Scanner;
 
 @Component
 public class UserInputProcessor implements Iterable<String>, Iterator<String> {
     private Scanner scanner;
-    private final List<Command> commands;
+    private final Collection<Command> commands;
 
-    public UserInputProcessor(Reader reader, List<Command> commands) {
-        this.scanner = new Scanner(reader);
+    public UserInputProcessor(Collection<Command> commands) {
         this.commands = commands;
+    }
+
+    @Autowired
+    public void setReader(Reader reader) {
+        this.scanner = new Scanner(reader);
     }
 
     @Override
