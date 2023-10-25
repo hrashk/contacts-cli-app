@@ -1,12 +1,10 @@
 package io.github.hrashk;
 
-import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 import java.util.*;
 
 @Component
-@Profile("default")
 public class ContactsList {
     private final List<Contact> contacts = new ArrayList<>();
 
