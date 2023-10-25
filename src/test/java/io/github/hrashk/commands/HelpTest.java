@@ -12,7 +12,7 @@ import java.util.stream.Stream;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class HelpTest {
-    protected ConfigurableApplicationContext ctx;
+    private ConfigurableApplicationContext ctx;
     private Help help;
 
     @BeforeEach
