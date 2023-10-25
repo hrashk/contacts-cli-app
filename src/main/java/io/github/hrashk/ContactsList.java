@@ -25,7 +25,7 @@ public class ContactsList {
     }
 
     public Optional<Contact> findByEmail(String email) {
-        return contacts.stream().filter(c -> c.hasEmail(email)).findAny();
+        return contacts.stream().filter(c -> c.hasSameEmailAs(email)).findAny();
     }
 
     public void update(Contact contact) {
@@ -33,6 +33,6 @@ public class ContactsList {
     }
 
     public void removeByEmail(String email) {
-        contacts.removeIf(c -> c.hasEmail(email));
+        contacts.removeIf(c -> c.hasSameEmailAs(email));
     }
 }

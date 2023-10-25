@@ -9,10 +9,10 @@ public record Contact(String name, String phone, String email) {
     }
 
     public boolean hasSameEmailAs(Contact contact) {
-        return hasEmail(contact.email());
+        return contact != null && hasSameEmailAs(contact.email);
     }
 
-    public boolean hasEmail(String email) {
+    public boolean hasSameEmailAs(String email) {
         return Objects.equals(this.email, email);
     }
 }
