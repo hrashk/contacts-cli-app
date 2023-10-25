@@ -1,7 +1,7 @@
-package io.github.hrashk.commands;
+package io.github.hrashk.contacts.cli.app.commands;
 
-import io.github.hrashk.Contact;
-import io.github.hrashk.ContactsList;
+import io.github.hrashk.contacts.cli.app.Contact;
+import io.github.hrashk.contacts.cli.app.ContactsList;
 import org.springframework.stereotype.Component;
 
 import java.util.stream.Collectors;

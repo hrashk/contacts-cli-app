@@ -1,4 +1,4 @@
-package io.github.hrashk.commands;
+package io.github.hrashk.contacts.cli.app.commands;
 
 import org.springframework.stereotype.Component;
 

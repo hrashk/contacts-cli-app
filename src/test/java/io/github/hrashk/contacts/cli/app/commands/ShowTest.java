@@ -1,7 +1,7 @@
-package io.github.hrashk.commands;
+package io.github.hrashk.contacts.cli.app.commands;
 
-import io.github.hrashk.ContactsList;
-import io.github.hrashk.TestData;
+import io.github.hrashk.contacts.cli.app.ContactsList;
+import io.github.hrashk.contacts.cli.app.TestData;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

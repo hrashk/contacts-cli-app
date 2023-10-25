@@ -1,6 +1,6 @@
-package io.github.hrashk;
+package io.github.hrashk.contacts.cli.app;
 
-import io.github.hrashk.config.AppConfig;
+import io.github.hrashk.contacts.cli.app.config.AppConfig;
 import org.junit.jupiter.api.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
