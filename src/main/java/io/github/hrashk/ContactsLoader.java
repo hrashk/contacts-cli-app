@@ -16,9 +16,6 @@ public class ContactsLoader implements InitializingBean {
     private String filePath;
     private ContactsList contacts;
 
-    public ContactsLoader() {
-    }
-
     @Value("${app.load.path}")
     public void setFilePath(String filePath) {
         this.filePath = filePath;
