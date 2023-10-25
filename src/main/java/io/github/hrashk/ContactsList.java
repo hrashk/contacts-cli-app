@@ -25,14 +25,14 @@ public class ContactsList {
     }
 
     public Optional<Contact> findByEmail(String email) {
-        return contacts.stream().filter(c -> Objects.equals(c.email(), email)).findAny();
+        return contacts.stream().filter(c -> c.hasEmail(email)).findAny();
     }
 
     public void update(Contact contact) {
-        contacts.replaceAll(c -> Objects.equals(c.email(), contact.email()) ? contact : c);
+        contacts.replaceAll(c -> c.hasSameEmailAs(contact) ? contact : c);
     }
 
     public void removeByEmail(String email) {
-        contacts.removeIf(c -> Objects.equals(c.email(), email));
+        contacts.removeIf(c -> c.hasEmail(email));
     }
 }
