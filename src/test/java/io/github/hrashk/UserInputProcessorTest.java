@@ -9,6 +9,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import java.io.File;
@@ -18,12 +19,13 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class UserInputProcessorTest {
 
+    protected ConfigurableApplicationContext ctx;
     private UserInputProcessor processor;
     private String saveFilePath;
 
     @BeforeEach
     public void setUpContext() {
-        var ctx = new AnnotationConfigApplicationContext(AppConfig.class);
+        ctx = new AnnotationConfigApplicationContext(AppConfig.class);
 
         var repo = ctx.getBean(ContactsList.class);
         TestData.addSampleContacts(repo);
@@ -35,6 +37,11 @@ class UserInputProcessorTest {
     @AfterEach
     public void deleteSavedFile() {
         new File(saveFilePath).delete();
+    }
+
+    @AfterEach
+    public void closeContext() {
+        ctx.close();
     }
 
     @Test

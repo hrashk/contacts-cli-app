@@ -5,12 +5,15 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 
 public class ContactsApp {
     public static void main(String[] args) {
-        var ctx = new AnnotationConfigApplicationContext(AppConfig.class);
+        try (var ctx = new AnnotationConfigApplicationContext(AppConfig.class)) {
+            var processor = ctx.getBean(UserInputProcessor.class);
+            loop(processor);
+        }
+    }
 
-        var parser = ctx.getBean(UserInputProcessor.class);
-
+    private static void loop(UserInputProcessor processor) {
         prompt();
-        for (String output : parser) {
+        for (String output : processor) {
             System.out.println(output);
             prompt();
         }
