@@ -32,7 +32,7 @@ will run it with the `init` profile.
 
 ## Available commands
 
-The app allows adding and removing contact details to a contact list.
+The app allows adding and removing contact details in a contact list.
 Enter the `help` command in the app to see the list of available commands with their short description.
 For example, when running with the `init` profile, you may type the `show` command to see what contacts
 were loaded initially.
@@ -41,7 +41,7 @@ were loaded initially.
 
 The app reads its configuration from the `src/main/resources/application.properties` file.
 In addition, when running with the `init` profile, it also reads the
-`src/main/resources/application-ini.properties` file.
+`src/main/resources/application-init.properties` file.
 You may override any of the parameters from the command line using the `-D` flag similar to the examples above.
 
 The following configuration parameters govern the behavior of the app
