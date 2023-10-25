@@ -19,7 +19,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class UserInputProcessorTest {
 
-    protected ConfigurableApplicationContext ctx;
+    private ConfigurableApplicationContext ctx;
     private UserInputProcessor processor;
     private String saveFilePath;
 

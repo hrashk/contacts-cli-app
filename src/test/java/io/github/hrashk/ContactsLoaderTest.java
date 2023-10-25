@@ -1,21 +1,37 @@
 package io.github.hrashk;
 
+import io.github.hrashk.config.AppConfig;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class ContactsLoaderTest {
+    private AnnotationConfigApplicationContext ctx;
+
+    @AfterEach
+    public void closeContext() {
+        ctx.close();
+    }
 
     @Test
-    public void readContacts() throws Exception {
-        var repo = new ContactsList();
+    public void withoutLoader() {
+        ctx = new AnnotationConfigApplicationContext(AppConfig.class);
+        ContactsList contacts = ctx.getBean(ContactsList.class);
+        assertTrue(contacts.isEmpty(), "There are no contacts");
+    }
 
-        var loader = new ContactsLoader();
-        loader.setFilePath("src/main/resources/default-contacts.txt");
-        loader.setContacts(repo);
 
-        loader.afterPropertiesSet();
+    @Test
+    public void withLoader() {
+        ctx = new AnnotationConfigApplicationContext();
+        ctx.getEnvironment().setActiveProfiles("init");
+        ctx.register(AppConfig.class);
+        ctx.refresh();
 
-        assertEquals(3, repo.getSize());
+        ContactsList contacts = ctx.getBean(ContactsList.class);
+        assertFalse(contacts.isEmpty(), "There are some contacts in the repo");
     }
 }
