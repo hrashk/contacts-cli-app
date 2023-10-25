@@ -1,8 +1,10 @@
 package io.github.hrashk.commands;
 
 import io.github.hrashk.config.AppConfig;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import java.util.stream.Stream;
@@ -10,13 +12,19 @@ import java.util.stream.Stream;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class HelpTest {
+    protected ConfigurableApplicationContext ctx;
     private Help help;
 
     @BeforeEach
     public void setUpContext() {
-        var ctx = new AnnotationConfigApplicationContext(AppConfig.class);
+        ctx = new AnnotationConfigApplicationContext(AppConfig.class);
 
         help = ctx.getBean(Help.class);
+    }
+
+    @AfterEach
+    public void closeContext() {
+        ctx.close();
     }
 
     @Test
