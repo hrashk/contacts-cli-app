@@ -1,20 +1,13 @@
 package io.github.hrashk;
 
 import io.github.hrashk.config.AppConfig;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-class ContactsLoaderTest {
-    private AnnotationConfigApplicationContext ctx;
-
-    @AfterEach
-    public void closeContext() {
-        ctx.close();
-    }
+class ContactsLoaderTest extends ContextAware {
 
     @Test
     public void withoutLoader() {

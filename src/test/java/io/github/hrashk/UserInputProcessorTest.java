@@ -9,7 +9,6 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import java.io.File;
@@ -17,9 +16,8 @@ import java.io.StringReader;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class UserInputProcessorTest {
+class UserInputProcessorTest extends ContextAware {
 
-    private ConfigurableApplicationContext ctx;
     private UserInputProcessor processor;
     private String saveFilePath;
 
@@ -37,11 +35,6 @@ class UserInputProcessorTest {
     @AfterEach
     public void deleteSavedFile() {
         new File(saveFilePath).delete();
-    }
-
-    @AfterEach
-    public void closeContext() {
-        ctx.close();
     }
 
     @Test
