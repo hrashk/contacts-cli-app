@@ -1,4 +1,4 @@
-package io.github.hrashk.commands;
+package io.github.hrashk.contacts.cli.app.commands;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

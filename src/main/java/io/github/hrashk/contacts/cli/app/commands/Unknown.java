@@ -1,4 +1,4 @@
-package io.github.hrashk.commands;
+package io.github.hrashk.contacts.cli.app.commands;
 
 /**
  * This class is used as a sentinel and is intentionally not marked as a component.

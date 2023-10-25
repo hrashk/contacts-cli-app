@@ -1,10 +1,10 @@
-package io.github.hrashk;
+package io.github.hrashk.contacts.cli.app;
 
-import io.github.hrashk.commands.Add;
-import io.github.hrashk.commands.Delete;
-import io.github.hrashk.commands.Quit;
-import io.github.hrashk.commands.Save;
-import io.github.hrashk.config.AppConfig;
+import io.github.hrashk.contacts.cli.app.commands.Add;
+import io.github.hrashk.contacts.cli.app.commands.Delete;
+import io.github.hrashk.contacts.cli.app.commands.Quit;
+import io.github.hrashk.contacts.cli.app.commands.Save;
+import io.github.hrashk.contacts.cli.app.config.AppConfig;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -14,7 +14,8 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import java.io.File;
 import java.io.StringReader;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class UserInputProcessorTest extends ContextAware {
 
@@ -79,7 +80,7 @@ class UserInputProcessorTest extends ContextAware {
 
         String output = processor.next();
 
-        assertEquals(Add.CONTACT_ADDED, output);
+        Assertions.assertEquals(Add.CONTACT_ADDED, output);
     }
 
     @Test

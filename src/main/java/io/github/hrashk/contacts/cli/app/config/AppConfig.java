@@ -1,4 +1,4 @@
-package io.github.hrashk.config;
+package io.github.hrashk.contacts.cli.app.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;

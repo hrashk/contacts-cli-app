@@ -1,4 +1,4 @@
-package io.github.hrashk;
+package io.github.hrashk.contacts.cli.app;
 
 import org.junit.jupiter.api.AfterEach;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;

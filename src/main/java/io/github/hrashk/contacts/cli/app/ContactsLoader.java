@@ -1,4 +1,4 @@
-package io.github.hrashk;
+package io.github.hrashk.contacts.cli.app;
 
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;

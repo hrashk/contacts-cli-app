@@ -1,4 +1,4 @@
-package io.github.hrashk;
+package io.github.hrashk.contacts.cli.app;
 
 import java.util.Objects;
 

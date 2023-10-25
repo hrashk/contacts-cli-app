@@ -1,6 +1,6 @@
-package io.github.hrashk.commands;
+package io.github.hrashk.contacts.cli.app.commands;
 
-import io.github.hrashk.config.AppConfig;
+import io.github.hrashk.contacts.cli.app.config.AppConfig;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

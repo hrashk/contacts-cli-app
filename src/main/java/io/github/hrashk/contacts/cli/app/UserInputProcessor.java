@@ -1,8 +1,8 @@
-package io.github.hrashk;
+package io.github.hrashk.contacts.cli.app;
 
-import io.github.hrashk.commands.Command;
-import io.github.hrashk.commands.Quit;
-import io.github.hrashk.commands.Unknown;
+import io.github.hrashk.contacts.cli.app.commands.Command;
+import io.github.hrashk.contacts.cli.app.commands.Quit;
+import io.github.hrashk.contacts.cli.app.commands.Unknown;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
